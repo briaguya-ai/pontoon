@@ -1,0 +1,15 @@
+id: org.harbourmasters.soh
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: soh
+modules:
+  - name: soh
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 soh.sh /app/bin/soh
+    sources:
+      - type: script
+        dest-filename: soh.sh
+        commands:
+          - echo "Enough! My ship sails in the morning!"

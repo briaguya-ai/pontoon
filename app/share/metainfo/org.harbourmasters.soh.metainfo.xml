@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.harbourmasters.soh</id>
+  
+  <name>Ship of Harkinian</name>
+  <summary>Enough! My ship sails in the morning!</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>None</project_license>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>gamepad</control>
+  </supports>
+  
+  <description>
+    <p>
+      Enough! My ship sails in the morning!
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">org.harbourmasters.soh.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/HarbourMasters/shipofharkinian.com/refs/heads/main/public/splash_poster.jpg</image>
+    </screenshot>
+  </screenshots>
+  
+  <icon type="stock">shipofharkinian</icon>
+  
+  <categories>
+    <category>Game</category>
+    <category>AdventureGame</category>
+  </categories>
+  
+  <provides>
+    <binary>soh</binary>
+  </provides>
+</component>
