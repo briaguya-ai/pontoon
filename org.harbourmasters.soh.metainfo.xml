@@ -4,9 +4,9 @@
   
   <name>Ship of Harkinian</name>
   <summary>Enough! My ship sails in the morning!</summary>
+  <developer_name>Harbour Masters</developer_name>
   
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>None</project_license>
   
   <supports>
     <control>pointing</control>
@@ -26,8 +26,16 @@
       <image>https://raw.githubusercontent.com/HarbourMasters/shipofharkinian.com/refs/heads/main/public/splash_poster.jpg</image>
     </screenshot>
   </screenshots>
-  
-  <icon type="stock">shipofharkinian</icon>
+
+  <releases>
+    <release version="8.0.6 (MacReady Golf)" date="2024-08-12"></release>
+  </releases>
+
+  <url type="homepage">https://www.shipofharkinian.com/</url>
+  <url type="bugtracker">https://github.com/HarbourMasters/Shipwright/issues</url>
+  <url type="contact">https://discord.com/invite/shipofharkinian</url>
+
+  <icon type="stock">org.harbourmasters.soh</icon>
   
   <categories>
     <category>Game</category>

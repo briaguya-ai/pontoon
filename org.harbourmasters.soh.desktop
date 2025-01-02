@@ -2,6 +2,6 @@
 Type=Application
 Name=Ship of Harkinian
 Comment=Enough! My ship sails in the morning!
-Icon=shipofharkinian
+Icon=org.harbourmasters.soh
 Exec=soh
 Categories=Game;AdventureGame

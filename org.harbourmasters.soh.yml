@@ -3,13 +3,81 @@ runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 command: soh
+cleanup:
+  - /assets
+  - /bin/lsb-release
+  - /bin/lsb_release
+  - /include
+  - /gamecontrollerdb.txt
+  - /soh.elf
+  - /soh.otr
+  - /soh.sh
+finish-args:
+  - --socket=x11
+  - --device=dri
+  - --device=input
+  - --socket=pulseaudio
+  - --env=SHIP_HOME=.var/app/org.harbourmasters.soh/data # i think this should be able to just be /app/data but ZAPD doesn't like that
+  - --env=SHIP_BIN_DIR=/app/bin
 modules:
-  - name: soh
+  - name: lsb_release
+    buildsystem: simple
+    cleanup:
+      - /share/man
+    build-commands:
+      - make
+      - make install INSTALL_ROOT=${FLATPAK_DEST}
+    sources:
+      - type: git
+        url: https://github.com/thkukuk/lsb-release_os-release.git
+        tag: v3.3
+  - name: boost
     buildsystem: simple
     build-commands:
-      - install -Dm755 soh.sh /app/bin/soh
+      - ./bootstrap.sh
+      - ./b2 install --prefix="$FLATPAK_DEST"
     sources:
-      - type: script
-        dest-filename: soh.sh
-        commands:
-          - echo "Enough! My ship sails in the morning!"
+      - type: archive
+        url: https://archives.boost.io/release/1.81.0/source/boost_1_81_0.tar.gz
+        sha256: 205666dea9f6a7cfed87c7a6dfbeb52a2c1b9de55712c9c1a87735d7181452b6
+  - name: soh
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    post-install:
+      - install -Dm644 ../icons/org.harbourmasters.soh.16x16.png ${FLATPAK_DEST}/share/icons/hicolor/16x16/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../icons/org.harbourmasters.soh.32x32.png ${FLATPAK_DEST}/share/icons/hicolor/32x32/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../icons/org.harbourmasters.soh.64x64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../icons/org.harbourmasters.soh.128x128.png ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../icons/org.harbourmasters.soh.256x256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../icons/org.harbourmasters.soh.512x512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/org.harbourmasters.soh.png
+      - install -Dm644 ../org.harbourmasters.soh.metainfo.xml ${FLATPAK_DEST}/share/metainfo/org.harbourmasters.soh.metainfo.xml
+      - install -Dm644 ../org.harbourmasters.soh.desktop ${FLATPAK_DEST}/share/applications/org.harbourmasters.soh.desktop
+      - install -Dm755 ./soh/soh.elf ${FLATPAK_DEST}/bin/soh
+      - install -d "${FLATPAK_DEST}/data"
+      # these should be in /data not /bin but that requires code changes
+      - install -Dm644 ./soh/soh.otr ${FLATPAK_DEST}/bin/soh.otr
+      - install -Dm644 ./gamecontrollerdb.txt ${FLATPAK_DEST}/bin/gamecontrollerdb.txt
+      - install -d "${FLATPAK_DEST}/bin/assets"
+      - cp -r ./soh/assets/* "${FLATPAK_DEST}/bin/assets"
+    sources:
+      - type: git
+        url: https://github.com/HarbourMasters/Shipwright.git
+        tag: 8.0.6
+      - type: file
+        path: org.harbourmasters.soh.metainfo.xml
+      - type: file
+        path: org.harbourmasters.soh.desktop
+      - type: dir
+        path: icons
+        dest: icons
+      - type: file
+        url: https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/075c1549075ef89a397fd7e0663d21e53a2485fd/gamecontrollerdb.txt
+        sha512: fdeb98ca595350979ee6ddb7f1954db0c9f9adca2fd08b86ac01f84329021cadc036f592b91e605db6a241e9415ad9665b72e6f8e8ac335e301402a4a45d3a6b
+      - type: patch
+        path: ensure_files_exist.patch
+    modules:
+      - shared-modules/glew/glew.json
+      - shared-modules/glu/glu-9.json
+      
