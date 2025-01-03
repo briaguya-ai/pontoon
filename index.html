@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Pontoon</title>
-	<link href="default.css" rel="stylesheet">
-</head>
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<body>
+    <!-- Meta -->
+    <title>Pontoon</title>
+    <meta name="title" content="Pontoon">
+    <meta name="description" content="A Flatpak repository for your favorite ships.">
+    <meta itemprop="name" content="Pontoon">
+    <meta itemprop="description" content="A Flatpak repository for your favorite ships.">
 
-<p>Pontoon.</p>
+    <meta name="viewport" content="width=device-width">
 
-<div class="red"></div>
-<div class="green"></div>
-<div class="blue"></div>
-<div class="no-color"></div>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Pontoon">
+    <meta property="og:description" content="A Flatpak repository for your favorite ships.">
+    <meta property="og:locale" content="en">
 
-</body>
-</html>
+    <link rel="stylesheet" type="text/css" href="default.css" media="screen">
+  </head>
+  <body class="schemea">
+    <header >
+      <h1 id="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800px" height="800px" viewBox="0 0 512 512">
+          <g>
+            <path d="M506.197,217.801c-4.864-5.931-12.126-9.37-19.797-9.37h-85.12l-57.933-84.062l-21.103,14.524l47.923,69.538H153.6v-51.2
+			c0-14.14-11.46-25.6-25.6-25.6H25.6c-14.14,0-25.6,11.46-25.6,25.6v204.8c0,14.14,11.46,25.6,25.6,25.6h307.2
+			c117.854,0,168.422-97.186,178.705-148.582C513.007,231.531,511.061,223.732,506.197,217.801z M25.6,157.232H128v51.2H25.6
+			V157.232z M332.8,362.032c-102.4,0-307.2,0-307.2,0v-76.8h440.141C445.013,320.875,405.393,362.032,332.8,362.032z
+			 M478.182,259.632H25.6v-25.6H128h358.4C486.4,234.032,484.173,244.664,478.182,259.632z"/>
+          </g>
+        </svg>
+        Pontoon
+      </h1>
+    </header>
+
+    <section class="schemeb">
+      <h2>A Flatpak repository for your favorite ships.</h2>
+      <p class="content">
+        Setting sail is easier than ever on devices that support Flatpak!
+      </p>
+    </section>
+
+    <section class="schemea">
+      <h2>Add Repository using Link</h2>
+      <ul class="content">
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16" height="16" viewBox="0 0 16 16">
+            <path d="M1 4v8c0 1.1.9 2 2 2h10a2 2 0 0 0 2-2V4zm7 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zm-2 3a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zm4 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zm0 0"></path>
+            <path d="M6 1 5 2v3h2V2h2v3h2V2l-1-1zm0 0"></path>
+          </svg>
+          <a href="https://pontoon.briaguya.dev/index.flatpakrepo" class="pill">
+            Enable Repository
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="schemeb" id="last-section">
+      <h2>Add Repository using CLI</h2>
+      <code>
+        flatpak remote-add --if-not-exists pontoon https://pontoon.briaguya.dev/index.flatpakrepo
+      </code>
+    </section>
+</body></html>
