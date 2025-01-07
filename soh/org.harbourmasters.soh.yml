@@ -77,6 +77,12 @@ modules:
         sha512: fdeb98ca595350979ee6ddb7f1954db0c9f9adca2fd08b86ac01f84329021cadc036f592b91e605db6a241e9415ad9665b72e6f8e8ac335e301402a4a45d3a6b
       - type: patch
         path: ensure_files_exist.patch
+      - type: patch
+        path: appdir.patch
+        options:
+        - -d
+        - libultraship
+
     modules:
       - ../shared-modules/glew/glew.json
       - ../shared-modules/glu/glu-9.json
